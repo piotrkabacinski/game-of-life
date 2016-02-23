@@ -1,0 +1,26 @@
+{
+  "name": "Game-Of-Life",
+  "version": "1.0.0",
+  "description": "Game of Life in Angular",
+  "main": "app/js/gol.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:piotrkabacinski/gameoflife.git"
+  },
+  "keywords": [
+    "game",
+    "of",
+    "life"
+  ],
+  "author": "Piotr Kabaciński",
+  "license": "MIT",
+  "devDependencies": {
+    "angular": "~1.5.0",
+    "bootstrap": "~3.3.6",
+    "jasmine-core": "~2.4.1",
+    "angular-mocks": "~1.5.0"
+  }
+}

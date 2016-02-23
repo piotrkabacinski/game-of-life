@@ -1,0 +1,55 @@
+p {
+	padding: 10px;
+	text-align: center;
+}
+
+button {
+	position: initial !important;
+}
+
+#world { 
+	overflow: hidden;
+	padding: 1px 0px 0px 1px;
+	border: 5px solid #DADADA;
+	margin: 1% auto 1% auto;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.cell {
+	width: 10px;
+	height: 10px;
+	background: #E2E2E2;
+	margin: 0px 1px 1px 0px;
+	float: left;
+	transition: 0.35s;
+}
+
+.cell:hover {
+	background: grey;
+	cursor: pointer;
+}
+
+.alive {
+	animation-name: ressurect;
+	animation-timing-function: ease;	
+	animation-duration: 0.35s;
+	background: #4BAF41;
+}
+
+.alive:hover {
+	background: #4BAF41;
+}
+
+.run .cell {
+	cursor: not-allowed;
+}
+
+@keyframes ressurect {
+    0% { background: #E2E2E2; }
+    100% { background: #4BAF41; }
+}
+
+#controls {
+	text-align: center;
+}
