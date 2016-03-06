@@ -160,6 +160,7 @@ angular.module("gol" , [])
 }])
 
 // Directives
+
 .directive( "gol" , [ function() {
 
   "use strict";
@@ -210,7 +211,7 @@ angular.module("gol" , [])
 
 }])
 
-// Services
+// Service
 
 .service( "cells" , [ "$log" , 'config' , function( $log , config ) {
 
@@ -255,7 +256,6 @@ angular.module("gol" , [])
 
 			var selectId = "x"+x+"y"+y,
 				cell = document.getElementById( selectId );
-				// cell.children[0].classList.add("alive");
 
 			config.logs && $log.info( "Cell " + selectId +" selected" );
 
