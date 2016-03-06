@@ -3,7 +3,7 @@ angular.module("gol" , [])
 // Config
 
 .constant( 'config' , {
-     cellsAmount : 900,
+     cellsAmount : 2025,
      timeout : 300,
      logs: false
 })
@@ -52,8 +52,6 @@ angular.module("gol" , [])
 			config.logs && $log.info( "Cell "+selection.selectId+" unselected" );
 
 			delete $scope.society[ selection.selectId ];
-
-			// document.getElementById( selection.selectId ).children[0].classList.remove("alive");
 
 		}
 
@@ -162,15 +160,14 @@ angular.module("gol" , [])
 }])
 
 // Directives
-
-.directive( "cell" , [ function() {
+.directive( "gol" , [ function() {
 
   "use strict";
 
   return {
 
     restrict: "E",
-    template: '<div class="cell"></div>'
+    template: '<section class="container-fluid" ng-include="\'app/views/gol.html\'"></section>'
 
   };
 
@@ -195,6 +192,19 @@ angular.module("gol" , [])
     	return;
 
     }
+
+  };
+
+}])
+
+.directive( "cell" , [ function() {
+
+  "use strict";
+
+  return {
+
+    restrict: "E",
+    template: '<div class="cell"></div>'
 
   };
 
@@ -314,16 +324,6 @@ angular.module("gol" , [])
 
 					angular.forEach( society , function( cell , key ) {
 
-						// if( !!document.getElementById( cell.id ) !== false ) {
-
-						// 	element = document.getElementById( cell.id ).children[0];
-
-						// } else {
-
-						// 	config.logs && $log.log("No "+cell.id );
-
-						// }
-
 						if( cell.status == "alive" && cell.neighbours > 1 && cell.neighbours < 4 ) {
 
 							cell.status = "alive";
@@ -342,25 +342,6 @@ angular.module("gol" , [])
 
 						cell.neighbours = 0;
 
-						// if( element ) {
-
-						// 	switch( cell.status ) {
-
-						// 		case "alive":
-
-						// 			element.classList.add("alive");
-
-						// 		break;
-
-						// 		default:
-
-						// 			element.classList.remove("alive");
-						// 			config.logs && $log.log( cell.id +" remove class and from society: "+ cell.status );				
-
-						// 	}
-
-						// }
-
 						if( cell.status == "dead" ) {
 
 							config.logs && $log.log( cell.id +" has been killed" );
@@ -374,47 +355,15 @@ angular.module("gol" , [])
 
 				};
 
-				// var correctView = function( society ) {
-
-				// 	var elements = document.getElementById("world").children,
-				// 		i = 0,
-				// 		l = elements.length,
-				// 		id;
-
-				// 	for( i; i <l; i++ ) {
-
-				// 		id = elements[i].id;
-
-				// 		if( elements[i].children[0].classList.contains("alive") && society[id] == undefined ) {
-
-				// 			elements[i].children[0].classList.remove("alive");
-				// 			console.log("Ghost class removed: "+id );
-
-				// 		}
-
-				// 	}
-
-				// }
-
 
 				society = checkNeighbours( society );
 				society = lifeOrDeath( society );
-				// correctView( society );
 
 				return society;
 
 			},
 
 			homicide = function() {
-
-				// var alive = document.getElementsByClassName("alive");
-
-				// for() loop won't work becouse getElementsByClassName is live!
-				// while (alive.length) {
-
-				// 	alive[0].classList.remove("alive");
-
-				// }
 
 				return {};
 

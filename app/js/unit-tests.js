@@ -23,12 +23,13 @@ describe('Game of life unit tests', function() {
 
    });
 
+   // To pass this test make sure that amount of "dead cells" is equal to value in config constant
    it('Should breed dead cells to init an app', function() {
 
      var $scope = {};
      var controller = $controller('mainController', { $scope: $scope });
 
-     expect( Object.keys( $scope.cells ).length ).toBe( 900 );
+     expect( Object.keys( $scope.cells ).length ).toBe( 2025 );
 
    });
 
