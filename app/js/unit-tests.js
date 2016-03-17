@@ -2,20 +2,19 @@ describe('Game of life unit tests', function() {
 
     beforeEach( module('gol') );
 
-    var $controller;
+    var $controller,
+    	$scope;
 
-    beforeEach(inject(function(_$controller_){
+    beforeEach( inject( function(_$controller_){
 
-     $controller = _$controller_;
+	    $scope = {};
+	    $controller = _$controller_('mainController', { $scope: $scope });
    
-  }));
+  	}));
 
  describe('$scope & service tests', function() {
 
    it('This value should be true when env ins ready', function() {
-
-     var $scope = {};
-     var controller = $controller('mainController', { $scope: $scope });
 
      $scope.select( 1 , 2 );
 
@@ -26,17 +25,11 @@ describe('Game of life unit tests', function() {
    // To pass this test make sure that amount of "dead cells" is equal to value in config constant
    it('Should breed dead cells to init an app', function() {
 
-     var $scope = {};
-     var controller = $controller('mainController', { $scope: $scope });
-
      expect( Object.keys( $scope.cells ).length ).toBe( 2025 );
 
    });
 
    it('Should add a Cell to Society', function() {
-
-     var $scope = {};
-     var controller = $controller('mainController', { $scope: $scope });
 
      $scope.select( 1 , 2 );
 
@@ -47,9 +40,6 @@ describe('Game of life unit tests', function() {
 
    it('Should step a one cycle', function() {
 
-     var $scope = {};
-     var controller = $controller('mainController', { $scope: $scope });
-
      $scope.go();
 
      expect( $scope.statuses.cycle ).toBe( 1 );
@@ -57,9 +47,6 @@ describe('Game of life unit tests', function() {
    });
 
    it('Should homicide all active cells', function() {
-
-     var $scope = {};
-     var controller = $controller('mainController', { $scope: $scope });
 
      $scope.select( 1 , 2 );
      $scope.homicide();
