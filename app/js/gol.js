@@ -116,12 +116,12 @@ angular.module("gol" , [])
 				var deferred = $q.defer(),
 			   		timer = $timeout(function() {
 
-			    	$scope.society = cells.digest( $scope.society );
-			    	$scope.statuses.cycle += 1;
+				    	$scope.society = cells.digest( $scope.society );
+				    	$scope.statuses.cycle += 1;
 
-			    	deferred.resolve("It's done!");
+				    	deferred.resolve("It's done!");
 
-			    }, config.timeout );
+			   		}, config.timeout );
 
 				return deferred.promise;
 
@@ -254,18 +254,14 @@ angular.module("gol" , [])
 
 		select = function( x , y ) {
 
-			var selectId = "x"+x+"y"+y,
-				cell = document.getElementById( selectId );
-
 			config.logs && $log.info( "Cell " + selectId +" selected" );
 
 			return {
 
-				selectId : selectId,
+				selectId : "x"+x+"y"+y,
 				selectedCell : {
 					x: x,
 					y: y,
-					id : selectId,
 					status : "alive",
 					neighbours : 0
 				}
@@ -282,7 +278,6 @@ angular.module("gol" , [])
 				angular.forEach( society , function( cell , key ) {
 
 					var neighboursXYcoordinates = [ [ -1 , -1 ] , [ 0 , -1 ] , [ 1 , -1 ] , [ -1 , 0 ] , [ 1 , 0 ] , [ -1 , 1 ] , [ 0 , 1 ] , [ 1 , 1 ] ],
-						selectId = "x"+cell.x+"y"+cell.y,
 						coordinates,
 						nId,
 						nX,
@@ -299,7 +294,7 @@ angular.module("gol" , [])
 								society[nId] = {
 									x: nX,
 									y: nY,
-									id: "x"+nX+"y"+nY,
+									// id: "x"+nX+"y"+nY,
 									status : "fresh",
 									neighbours : 1
 								};
@@ -320,19 +315,22 @@ angular.module("gol" , [])
 				var lifeOrDeath = function( society ) {
 
 					var element,
-						cell;
+						cell,
+						id;
 
 					angular.forEach( society , function( cell , key ) {
+
+						id = "x"+cell.x+"y"+cell.y;
 
 						if( cell.status == "alive" && cell.neighbours > 1 && cell.neighbours < 4 ) {
 
 							cell.status = "alive";
-							config.logs && $log.log( cell.id +" is still alive" );
+							config.logs && $log.log( id +" is still alive" );
 
 						} else if ( cell.status == "fresh" && cell.neighbours == 3 ) {
 
 							cell.status = "alive";
-							config.logs && $log.log( cell.id +" became alive" );
+							config.logs && $log.log( id +" became alive" );
 
 						} else {
 							
@@ -344,8 +342,8 @@ angular.module("gol" , [])
 
 						if( cell.status == "dead" ) {
 
-							config.logs && $log.log( cell.id +" has been killed" );
-							delete society[cell.id];
+							config.logs && $log.log( id +" has been killed" );
+							delete society[id];
 
 						}
 
