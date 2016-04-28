@@ -10,7 +10,7 @@ module.exports = function(config) {
 		  "app/js/gol.js",
 		  "app/js/unit-tests.js"
 		],
-		browsers: [ 'Chrome' , 'Firefox' ]
+		browsers: [ 'Chrome' , 'Firefox' ],
 		customLaunchers: {
 				Chrome_travis_ci: {
 				base: 'Chrome',
