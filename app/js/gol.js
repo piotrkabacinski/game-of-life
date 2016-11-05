@@ -42,7 +42,7 @@ angular.module("gol" , [])
 		var selection = cells.select( x , y );
 
     	// If there's no cell in society - add it
-		if( $scope.society[ selection.selectId ] === undefined && $scope.statuses.pause == false ) {
+		if( $scope.society[ selection.selectId ] === undefined && $scope.statuses.pause === false ) {
 
 			$scope.society[ selection.selectId ] = selection.selectedCell;
 
@@ -66,7 +66,7 @@ angular.module("gol" , [])
 
 		$scope.society = cells.digest( $scope.society );
 
-		if( Object.keys( $scope.society) .length == 0 ) {
+		if( Object.keys( $scope.society).length === 0 ) {
 
 			$scope.statuses.ready = false;
 			alert("No cells alive");
@@ -102,7 +102,7 @@ angular.module("gol" , [])
 
 					$timeout.cancel( timer );
 
-				} else if( Object.keys($scope.society).length == 0 ) {
+				} else if( Object.keys($scope.society).length === 0 ) {
 
 					$timeout.cancel( timer );
 					$scope.statuses.timeout = false;
@@ -304,7 +304,7 @@ angular.module("gol" , [])
 								society[nId].neighbours += 1;
 							}
 
-						}					
+						}
 
 					});
 
@@ -327,14 +327,14 @@ angular.module("gol" , [])
 							cell.status = "alive";
 							config.logs && $log.log( id +" is still alive" );
 
-						} else if ( cell.status == "fresh" && cell.neighbours == 3 ) {
+						} else if ( cell.status == "fresh" && cell.neighbours === 3 ) {
 
 							cell.status = "alive";
 							config.logs && $log.log( id +" became alive" );
 
 						} else {
-							
-							cell.status = "dead";							
+
+							cell.status = "dead";
 
 						}
 
