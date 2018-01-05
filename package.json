@@ -1,8 +1,8 @@
 {
   "name": "Game-Of-Life",
-  "version": "1.0.0",
-  "description": "Game of Life in Angular",
-  "main": "app/js/gol.js",
+  "version": "1.0.1",
+  "description": "Game of Life in AngularJs",
+  "main": "app/src/gol.js",
   "scripts": {
     "test": "karma start"
   },
@@ -18,15 +18,15 @@
   "author": "Piotr Kabaciński",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.5.0",
-    "bootstrap": "~3.3.6"
+    "angular": "1.5.0",
+    "bootstrap": "3.3.6"
   },
   "devDependencies": {
-    "angular-mocks": "~1.5.0",
-    "jasmine-core": "~2.4.1",
-    "karma": "^0.13.21",
-    "karma-chrome-launcher": "^0.2.2",
-    "karma-firefox-launcher": "^0.1.7",
-    "karma-jasmine": "^0.3.7"
+    "angular-mocks": "1.5.0",
+    "jasmine-core": "2.4.1",
+    "karma": "0.13.21",
+    "karma-chrome-launcher": "0.2.2",
+    "karma-firefox-launcher": "0.1.7",
+    "karma-jasmine": "0.3.7"
   }
 }

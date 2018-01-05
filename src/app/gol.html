@@ -1,8 +1,5 @@
 <map ng-class='{ run : statuses.pause }'>
-
-	<!-- <cell ng-repeat="cell in cells" ng-click="select( cell.x , cell.y );" id="x{{::cell.x}}y{{::cell.y}}"></cell> -->
 	<div ng-repeat="cell in ::cells track by cell.id" ng-click="select( cell.x , cell.y );" id="x{{::cell.x}}y{{::cell.y}}" ng-class="{ 'cell': true , 'alive' : society['x{{::cell.x}}y{{::cell.y}}'].status == 'alive' }"></div>
-
 </map>
 
 <p class='alert alert-info' ng-if="!statuses.ready">
