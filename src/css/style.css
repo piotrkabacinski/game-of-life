@@ -20,7 +20,7 @@ button {
 	width: 10px;
 	height: 10px;
 	background: #E2E2E2;
-	margin: 0px 1px 1px 0px;
+	margin: 0 1px 1px 0;
 	float: left;
 	transition: 0.35s;
 }
