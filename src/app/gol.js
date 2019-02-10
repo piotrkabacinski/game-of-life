@@ -49,13 +49,13 @@ angular.module("gol" , [])
 			delete $scope.society[selection.selectId];
 		}
    		// Control buttons visibility
-		$scope.statuses.ready = (Object.keys($scope.society).length > 0) ? true : false;
+		$scope.statuses.ready = Object.keys($scope.society).length > 0;
 	};
 
 	$scope.go = function() {
 		$scope.society = cells.digest($scope.society);
 
-		if (Object.keys($scope.society).length === 0) {
+		if (!Object.keys($scope.society).length) {
 			$scope.statuses.ready = false;
 			alert("No cells alive");
 		}
@@ -74,10 +74,10 @@ angular.module("gol" , [])
 			$scope.statuses.pause = true;
 
 			var go = function() {
-				if ($scope.statuses.timeout === false) {
+				if (!$scope.statuses.timeout) {
 					$timeout.cancel(timer);
 
-				} else if (Object.keys($scope.society).length === 0) {
+				} else if (!Object.keys($scope.society).length) {
 					$timeout.cancel(timer);
 					$scope.statuses.timeout = false;
 					$scope.statuses.pause = false;
@@ -97,7 +97,7 @@ angular.module("gol" , [])
 			};
 
 			go().then(function() {
-				if ($scope.statuses.timeout === true) {
+				if ($scope.statuses.timeout) {
 					$scope.run();
 				}
 			});
@@ -198,7 +198,12 @@ angular.module("gol" , [])
 			var checkNeighbours = function(society) {
 
 				angular.forEach(society , function(cell , key) {
-					var neighboursXYcoordinates = [ [ -1 , -1 ] , [ 0 , -1 ] , [ 1 , -1 ] , [ -1 , 0 ] , [ 1 , 0 ] , [ -1 , 1 ] , [ 0 , 1 ] , [ 1 , 1 ] ],
+					var neighboursXYcoordinates = [
+						[-1 , -1], [0 , -1],
+						[1 , -1], [-1 , 0],
+						[1 , 0], [-1 , 1] ,
+						[0 , 1 ] , [1 , 1]
+					],
 						coordinates,
 						nId,
 						nX,
@@ -213,7 +218,6 @@ angular.module("gol" , [])
 								society[nId] = {
 									x: nX,
 									y: nY,
-									// id: "x"+nX+"y"+nY,
 									status : "fresh",
 									neighbours : 1
 								};

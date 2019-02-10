@@ -9,3 +9,5 @@
 `$ cd game-of-life`
 
 `$ npm install`
+
+<img src="./gol.gif" width="600">

@@ -1,5 +1,10 @@
 <map ng-class='{ run : statuses.pause }'>
-	<div ng-repeat="cell in ::cells track by cell.id" ng-click="select( cell.x , cell.y );" id="x{{::cell.x}}y{{::cell.y}}" ng-class="{ 'cell': true , 'alive' : society['x{{::cell.x}}y{{::cell.y}}'].status == 'alive' }"></div>
+  <div
+    ng-repeat="cell in ::cells track by cell.id"
+    ng-click="select( cell.x , cell.y );"
+    id="x{{::cell.x}}y{{::cell.y}}"
+    ng-class="{ 'cell': true , 'alive' : society['x{{::cell.x}}y{{::cell.y}}'].status == 'alive' }">
+  </div>
 </map>
 
 <p class='alert alert-info' ng-if="!statuses.ready">
@@ -7,9 +12,9 @@
 </p>
 
 <div id="controls" ng-show="statuses.ready">
-  <button class='btn btn-default' ng-click="go()" ng-show="!statuses.pause">Go</button>
+  <button class='btn btn-default' ng-click="go()" ng-show="!statuses.pause">Step</button>
   <button class='btn btn-default glyphicon glyphicon-play' ng-click="run()" ng-show="!statuses.pause"></button>
-  <button class='btn btn-default' ng-click="homicide()" ng-show="!statuses.pause">Homicide</button>
+  <button class='btn btn-default' ng-click="homicide()" ng-show="!statuses.pause">Reset</button>
   <button class='btn btn-default glyphicon glyphicon-pause' ng-click="pause()" ng-show="statuses.pause"></button>
   <button class='btn btn-default' ng-click="logSociety()" ng-show="!statuses.pause">Log society</button>
   <span>Cycle: {{statuses.cycle}}</span>
